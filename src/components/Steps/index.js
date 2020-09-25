@@ -17,6 +17,7 @@ export default class Steps extends Component {
   static propTypes = {
     enabled: PropTypes.bool,
     initialStep: PropTypes.number.isRequired,
+    initContainer: PropTypes.string,
     steps: PropTypes.arrayOf(
       PropTypes.shape({
         element: PropTypes.string,
@@ -217,7 +218,7 @@ export default class Steps extends Component {
    * Installs Intro.js.
    */
   installIntroJs() {
-    this.introJs = introJs();
+    this.introJs = introJs(this.props.initContainer);
 
     this.introJs.onexit(this.onExit);
     this.introJs.onbeforeexit(this.onBeforeExit);
